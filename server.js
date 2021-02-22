@@ -25,10 +25,12 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami", function (req, res) {
-  let userIpAddress = "bish boy";
-  let userLanguage = req.get("Accept-Language");
+  let userIpAddress = req.ip; // requests the ip address
+  let userLanguage = req.get("Accept-Language"); // Gets the preferred language and others that it would accept
   let userSoftware = "broke boy";
-  console.log(req.get("Accept-Language"));
+
+  console.log(req.header);
+  // Returns json object with three keyvalue pairs we wanted ipaddress, language and software
   res.json({
     ipaddress: userIpAddress,
     language: userLanguage,
