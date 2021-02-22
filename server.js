@@ -26,12 +26,12 @@ app.get("/api/hello", function (req, res) {
 
 app.get("/api/whoami", function (req, res) {
   let userIpAddress = req.ip; // requests the ip address
-  let userLanguage = req.get("Accept-Language"); // Gets the preferred language and others that it would accept
+  let userLanguage = req.headers["accept-language"]; // Gets the preferred language and others that it would accept
+  // console.log(req.headers);
   // req.headers returns a bunch of information like host:, connection:, 'upgrade-insecure-requests':, accept:, 'user-agent';, referer, 'accept-language:, and 'accept-encoding'
   // Then to get software information just call on the 'user-agent' key to get value
   let userSoftware = req.headers["user-agent"];
 
-  console.log(req.headers);
   // Returns json object with three keyvalue pairs we wanted ipaddress, language and software
   res.json({
     ipaddress: userIpAddress,
