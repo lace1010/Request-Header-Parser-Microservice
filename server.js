@@ -15,16 +15,16 @@ app.use(cors({ optionsSuccessStatus: 200 })); // some legacy browsers choke on 2
 app.use(express.static("public"));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
 // your first API endpoint...
-app.get("/api/hello", function (req, res) {
+app.get("/api/hello", (req, res) => {
   res.json({ greeting: "hello API" });
 });
 
-app.get("/api/whoami", function (req, res) {
+app.get("/api/whoami", (req, res) => {
   let userIpAddress = req.ip; // requests the ip address
   let userLanguage = req.headers["accept-language"]; // Gets the preferred language and others that it would accept
 
@@ -42,6 +42,6 @@ app.get("/api/whoami", function (req, res) {
 });
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT || 3000, function () {
+var listener = app.listen(process.env.PORT || 3000, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
